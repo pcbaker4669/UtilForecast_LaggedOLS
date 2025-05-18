@@ -11,8 +11,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # === API KEYS ===
-FRED_API_KEY = "YOUR_FRED_API_KEY_HERE"
-POLYGON_API_KEY = "YOUR_POLYGON_API_KEY_HERE"
+FRED_API_KEY = ""
+POLYGON_API_KEY = ""
 
 # === USER CONFIG ===
 STOCK_SYMBOL = "DUK"  # Duke Energy as the representative utility stock
@@ -72,18 +72,31 @@ def align_and_lag_data(macro_df, stock_df, lag_weeks):
     return merged.dropna()
 
 # === REGRESSION ===
-def run_regression(data):
+def run_regression(data, output_file="regression_summary.txt"):
     X = data[['delta_yield', 'cpi', 'natgas']]
     X = sm.add_constant(X)
     y = data['weekly_return']
 
     model = sm.OLS(y, X).fit()
-    print(model.summary())
+
+    # Save summary to file
+    with open(output_file, "w") as f:
+        f.write(model.summary().as_text())
+
+    print("Regression results saved to", output_file)
     return model
 
 if __name__ == "__main__":
     macro = get_macro_data()
     stock = get_stock_returns()
     full_data = align_and_lag_data(macro, stock, LAG_WEEKS)
+
     print("Final sample size:", len(full_data))
-    model = run_regression(full_data)
+
+    # Round and save
+    full_data_rounded = full_data.round(5)
+    full_data_rounded.to_csv("regression_input_data.csv")
+    print("Regression input data saved to regression_input_data.csv (rounded to 5 decimals)")
+
+    # Run and save regression
+    model = run_regression(full_data, output_file="regression_summary.txt")
