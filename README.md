@@ -6,7 +6,7 @@ This repository supports an academic investigation into how macroeconomic indica
 
 ---
 
-## 📘 Project Overview
+## Project Overview
 
 Utility companies are sensitive to broader macroeconomic forces due to their capital-intensive and regulated nature. This project asks:
 
@@ -24,7 +24,7 @@ This code:
 
 ---
 
-## 📁 Repository Contents
+## Repository Contents
 
 ```
 .
@@ -39,7 +39,7 @@ This code:
 
 ---
 
-## ⚙️ Setup Instructions
+## Setup Instructions
 
 1. **Clone the repository:**
 
@@ -78,7 +78,7 @@ This will:
 
 ---
 
-## 📊 Output Files
+## Output Files
 
 - `independent_lag_sweep.csv`: Contains one row per lag per variable with:
   - Adjusted R²
@@ -91,7 +91,7 @@ This will:
 
 ---
 
-## 🔬 Research Context
+## Research Context
 
 This repository supports a working paper titled:  
 **"Lagged Macroeconomic Signal Forecasting for U.S. Utility Stocks: A Linear Regression Sweep Approach"**
@@ -101,12 +101,12 @@ The findings help build a foundation for more advanced forecasting approaches su
 - Regime-switching models
 - Time-varying coefficient models
 
-👉 The best-lag model built from these results is continued in:  
+The best-lag model built from these results is continued in:  
 [UtilitiesBestLagPredictor](https://github.com/pcbaker4669/UtilitiesBestLagPredictor)
 
 ---
 
-## 📜 Citation
+## Citation
 
 If you use this repository or reproduce any results, please cite:
 
@@ -116,7 +116,7 @@ If you use this repository or reproduce any results, please cite:
 
 ---
 
-## 📬 Contact
+## Contact
 
 **Peter C. Baker**  
 PhD Student, Computational Social Science  
