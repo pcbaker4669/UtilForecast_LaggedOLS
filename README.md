@@ -1,4 +1,5 @@
 # UtilForecast_LaggedOLS
+[![DOI](https://zenodo.org/badge/985492220.svg)](https://doi.org/10.5281/zenodo.15460078)
 
 **Exploratory Regression Framework for Lag-Sensitive Forecasting of U.S. Utility Stocks**
 
