@@ -79,6 +79,11 @@ def run_regression(data):
 
     model = sm.OLS(y, X).fit()
     print(model.summary())
+
+    # Save summary to file
+    with open("regression_summary.txt", "w") as f:
+        f.write(model.summary().as_text())
+
     return model
 
 # === VARIABLE LAG SWEEP ===
@@ -121,14 +126,24 @@ def plot_variable_lag_sweep(df):
     plt.figure(figsize=(10, 6))
     for var in df['variable'].unique():
         subset = df[df['variable'] == var]
-        plt.plot(subset['lag'], subset['adj_r_squared'], label=f"{var} lag sweep")
-    plt.xlabel("Lag (Weeks)")
-    plt.ylabel("Adjusted R²")
-    plt.title("Adjusted R² by Lag for Individual Variables")
-    plt.legend()
-    plt.grid(True)
+        plt.plot(
+            subset['lag'],
+            subset['adj_r_squared'],
+            marker='o',
+            linewidth=2,
+            label=f"{var.upper()} Lag Sweep"
+        )
+    plt.xlabel("Lag (weeks)", fontsize=14)
+    plt.ylabel("Adjusted R²", fontsize=14)
+    plt.xticks(fontsize=12)
+    plt.yticks(fontsize=12)
+
+    plt.grid(color='gray', linestyle='--', linewidth=0.5)
+    plt.legend(title="Variable", fontsize=12, title_fontsize=13, loc='upper right')
     plt.tight_layout()
-    plt.savefig("independent_lag_sweep.png")
+
+    # Save high-resolution figure
+    plt.savefig("Figure1_AdjustedR2_LagSweep.png", dpi=300)
     plt.show()
 
 def save_lag_sweep_summary(result_df, filename="independent_lag_sweep_summary.txt"):
