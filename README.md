@@ -1,5 +1,5 @@
 # UtilForecast_LaggedOLS
-[![DOI](https://zenodo.org/badge/985492220.svg)](https://doi.org/10.5281/zenodo.15460078)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15511239.svg)](https://doi.org/10.5281/zenodo.15511239)
 
 **Exploratory Regression Framework for Lag-Sensitive Forecasting of U.S. Utility Stocks**
 
@@ -88,7 +88,7 @@ The findings help build a foundation for more advanced forecasting approaches su
 - Regime-switching models
 - Time-varying coefficient models
 
-+ The best-lag model is now integrated directly into `main.py` and runs automatically at the end of the script.
+The best-lag model is now integrated directly into `main.py` and runs automatically at the end of the script.
 
 ---
 
@@ -96,9 +96,9 @@ The findings help build a foundation for more advanced forecasting approaches su
 
 If you use this repository or reproduce any results, please cite:
 
-> Baker, Peter. *UtilForecast_LaggedOLS: An Exploratory Framework for Lag-Sensitive Forecasting of Regulated Utility Stocks*. Zenodo. DOI: [10.5281/zenodo.15453469](https://doi.org/10.5281/zenodo.15453469)
+> Baker, Peter. *UtilForecast_LaggedOLS: An Exploratory Framework for Lag-Sensitive Forecasting of Regulated Utility Stocks*. Zenodo. https://doi.org/10.5281/zenodo.15511239
 
-[![DOI](https://zenodo.org/badge/981723841.svg)](https://doi.org/10.5281/zenodo.15453469)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15511239.svg)](https://doi.org/10.5281/zenodo.15511239)
 
 ---
 
