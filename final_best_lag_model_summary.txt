@@ -1,0 +1,29 @@
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:          weekly_return   R-squared:                       0.152
+Model:                            OLS   Adj. R-squared:                  0.106
+Method:                 Least Squares   F-statistic:                     3.280
+Date:                Sun, 25 May 2025   Prob (F-statistic):             0.0276
+Time:                        06:53:00   Log-Likelihood:                 127.72
+No. Observations:                  59   AIC:                            -247.4
+Df Residuals:                      55   BIC:                            -239.1
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+===============================================================================
+                  coef    std err          t      P>|t|      [0.025      0.975]
+-------------------------------------------------------------------------------
+const           0.1376      0.055      2.483      0.016       0.027       0.249
+delta_yield     0.0125      0.033      0.384      0.703      -0.053       0.078
+cpi            -0.0004      0.000     -2.119      0.039      -0.001   -2.14e-05
+natgas         -0.0050      0.002     -2.402      0.020      -0.009      -0.001
+==============================================================================
+Omnibus:                        6.752   Durbin-Watson:                   1.843
+Prob(Omnibus):                  0.034   Jarque-Bera (JB):               10.444
+Skew:                          -0.212   Prob(JB):                      0.00540
+Kurtosis:                       5.017   Cond. No.                     4.36e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 4.36e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.

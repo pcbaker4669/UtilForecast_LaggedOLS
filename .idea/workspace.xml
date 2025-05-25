@@ -6,10 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="274cf99b-06df-4a1f-88a6-a3b18efcc6c8" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/independent_lag_sweep.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lag_sweep_r2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/regression_summary.txt" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

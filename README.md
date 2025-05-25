@@ -9,19 +9,7 @@ This repository supports an academic investigation into how macroeconomic indica
 
 ## Project Overview
 
-Utility companies are sensitive to broader macroeconomic forces due to their capital-intensive and regulated nature. This project asks:
-
-**"How much predictive value do macroeconomic variables like interest rates, CPI, and natural gas prices hold when used with different time lags?"**
-
-This code:
-- Collects and processes weekly data for:
-  - Consumer Price Index (CPI)
-  - 10-Year Treasury Yield
-  - Henry Hub Natural Gas Price
-- Computes weekly returns for Duke Energy (DUK)
-- Runs a **lag sweep** from 0 to 12 weeks for each variable independently
-- Evaluates **Adjusted R²** and **p-values** to assess statistical significance
-- Outputs structured tables and plots for analysis
+This codebase builds a forecasting model for weekly utility stock returns using lagged macroeconomic signals. After conducting a systematic lag sweep across CPI, interest rates, and natural gas prices, it applies the best lags directly within the same script to generate a final regression model. No external scripts are required — the full analysis is reproducible from a single run.
 
 ---
 
@@ -29,13 +17,15 @@ This code:
 
 ```
 .
-├── main.py                          # Main script to run lag sweep and regression
+├── main.py                          # Unified script for lag sweep + final model
 ├── macro_data_lagged.csv           # Weekly CPI, Treasury, NatGas (FRED)
 ├── stock_returns_lagged.csv        # Weekly returns for DUK (Polygon.io)
 ├── independent_lag_sweep.csv       # Output table of lag sweep results
-├── independent_lag_sweep.png       # Plot of Adjusted R² vs lag
-├── regression_summary.txt          # Baseline regression output (screen + file)
+├── Figure1_AdjustedR2_LagSweep.png # Final R² plot
+├── regression_summary.txt          # Baseline regression output (lag=2)
+├── final_best_lag_model_summary.txt # Final model using best lags from sweep
 ├── README.md                       # This file
+
 ```
 
 ---
@@ -81,14 +71,10 @@ This will:
 
 ## Output Files
 
-- `independent_lag_sweep.csv`: Contains one row per lag per variable with:
-  - Adjusted R²
-  - R²
-  - p-values for delta_yield, CPI, and NatGas
-
-- `independent_lag_sweep.png`: Visualization showing lag effectiveness for each variable.
-
-- `regression_summary.txt`: Console-formatted OLS summary output for the default lag setup.
+- `independent_lag_sweep.csv`: One row per lag per variable with adjusted R² and p-values.
+- `Figure1_AdjustedR2_LagSweep.png`: Visualization showing adjusted R² across lags.
+- `regression_summary.txt`: Baseline model using fixed 2-week lag for all variables.
+- `final_best_lag_model_summary.txt`: OLS output using optimal lags (CPI=0, Yield=2, NatGas=0).
 
 ---
 
@@ -102,8 +88,7 @@ The findings help build a foundation for more advanced forecasting approaches su
 - Regime-switching models
 - Time-varying coefficient models
 
-The best-lag model built from these results is continued in:  
-[UtilitiesBestLagPredictor](https://github.com/pcbaker4669/UtilitiesBestLagPredictor)
++ The best-lag model is now integrated directly into `main.py` and runs automatically at the end of the script.
 
 ---
 

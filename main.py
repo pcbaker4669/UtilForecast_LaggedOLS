@@ -147,7 +147,7 @@ def plot_variable_lag_sweep(df):
     plt.show()
 
 def save_lag_sweep_summary(result_df, filename="independent_lag_sweep_summary.txt"):
-    with open(filename, "w") as f:
+    with open(filename, "w", encoding="utf-8") as f:
         for var in result_df['variable'].unique():
             f.write(f"\n=== Lag Sweep Summary for {var.upper()} ===\n")
             df_var = result_df[result_df['variable'] == var]
@@ -171,3 +171,28 @@ if __name__ == "__main__":
     indep_results = variable_lag_sweep(macro, stock, max_lag=12)
     plot_variable_lag_sweep(indep_results)
     save_lag_sweep_summary(indep_results)
+
+    # === FINAL MODEL USING BEST LAGS (from sweep insights) ===
+    BEST_LAGS = {'cpi': 0, '10yr_yield': 2, 'natgas': 0}
+    lagged_macro = pd.DataFrame(index=macro.index)
+
+    for var, lag in BEST_LAGS.items():
+        lagged_macro[var] = macro[var].shift(lag)
+
+    # Compute delta_yield AFTER lag
+    lagged_macro['delta_yield'] = lagged_macro['10yr_yield'].diff()
+
+    # Merge with stock data
+    merged_final = pd.concat([stock, lagged_macro], axis=1).dropna()
+
+    X_final = merged_final[['delta_yield', 'cpi', 'natgas']]
+    X_final = sm.add_constant(X_final)
+    y_final = merged_final['weekly_return']
+
+    final_model = sm.OLS(y_final, X_final).fit()
+
+    # Output to file
+    with open("final_best_lag_model_summary.txt", "w") as f:
+        f.write(final_model.summary().as_text())
+
+    print("Final model using best lags saved to final_best_lag_model_summary.txt")
